@@ -40,3 +40,47 @@ def frequent_words(text, k):
         if freq[key] == m:
             words.append(key)
     return words
+
+Text = "ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
+k = 10
+
+# Print the result of calling FrequentWords on Text and Pattern.
+print(frequent_words(Text, k))
+
+# Takes a string Pattern and returns a string formed  by reversing all the letters of Pattern
+def reverse(pattern):
+    rev = ""
+    for i in range(len(pattern)):
+        rev = pattern[i] + rev
+    return rev
+
+# One line version of the above function
+def reverse2(pattern):
+    return pattern[::-1]
+
+# Using reversed()
+def reverse3(pattern):
+    return ''.join(reversed(pattern))
+
+
+# Takes a DNA string Pattern and returns the complementary string of Pattern (with every nucleotide replaced by its complement)
+def complement(pattern):
+    comp = ""
+    for i in range(len(pattern)):
+        if pattern[i] == 'A':
+            comp += 'T'
+        elif pattern[i] == 'T':
+            comp += 'A'
+        elif pattern[i] == 'C':
+            comp += 'G'
+        elif pattern[i] == 'G':
+            comp += 'C'
+    return comp
+
+# Find all occurrences of a pattern in a string
+def pattern_matching(pattern, genome):
+    positions = []
+    for i in range(len(genome)-len(pattern)+1):
+        if genome[i:i+len(pattern)] == pattern:
+            positions.append(i)
+    return positions
